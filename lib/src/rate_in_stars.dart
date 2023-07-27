@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class RatingStars extends HookWidget {
-  RatingStars({
+  RatingStars( {
     Key? key,
     required this.rating,
     this.iconSize = 30,
     required this.editable,
     this.color = Colors.amber,
+     this.starsRowMainAxisAlignment,
   }) : super(key: key);
 
   final double iconSize;
@@ -17,13 +18,13 @@ class RatingStars extends HookWidget {
   final Color color;
   final bool editable;
   final double rating;
-
+  final MainAxisAlignment? starsRowMainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     final shopReview = useState(rating);
     return Center(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: starsRowMainAxisAlignment ?? MainAxisAlignment.center,
         children: [
           GestureDetector(
             onTap: editable
